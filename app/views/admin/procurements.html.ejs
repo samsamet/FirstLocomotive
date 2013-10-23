@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title%></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/knockout-2.3.0.js"></script>
+    <script type="text/javascript" src="javascripts/knockout.mapping.js"></script>
+    <script type="text/javascript" src="javascripts/jQuery-1.10.2.min.js"></script>
+</head>
+<body>
+
+
+
+<!--<p>Status: <strong data-bind="text: procData()[0].Status"></strong>-->
+<!--<p>First name: <strong data-bind="text: firstName"></strong></p>-->
+<!--<p>Last name: <strong data-bind="text: lastName"></strong></p>-->
+
+<!--<p>First name: <input data-bind="value:firstName" /></p>-->
+<!--<p>Last name: <input data-bind="value: lastName" /></p>-->
+
+<!--<p>Full name: <strong data-bind="text: fullName"></strong></p>-->
+
+     <h1><%= test%></h1>
+    <h1><a data-bind="click: $root.new">New Procurements</a></h1>
+            <table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>Actions</th>
+        <th>_id</th>
+        <th>Status</th>
+        <th>StartUnits</th>
+        <th>DemandDays</th>
+        <th>PlanName</th>
+        <th>PlanDefinition</th>
+        <th>EndWeek</th>
+        <th>EndFiscalMonth</th>
+        <th>EndFiscalQuarter</th>
+        <th>SKU</th>
+        <th>Class</th>
+        <th>GenderCat</th>
+        <th>ItemCategory</th>
+        <th>Style</th>
+        <th>Color</th>
+        <th>Location</th>
+        <th>LocGroup</th>
+        <th>SubGroup</th>
+        <th>Organization</th>
+        <th>StartAmount</th>
+    </tr>
+  <tbody  data-bind="foreach: procData">
+    <tr>
+        <td><img  data-bind="attr: {id: _id}, click: $parent.edit" src="images/icon_edit.png"/></td>
+        <td data-bind="text: _id"></td>
+        <td data-bind="text: Status"></td>
+        <td data-bind="text: StartUnits"></td>
+        <td data-bind="text: DemandDays"></td>
+        <td data-bind="text: PlanName"></td>
+        <td data-bind="text: PlanDefinition"></td>
+        <td data-bind="text: EndWeek"></td>
+        <td data-bind="text: EndFiscalMonth"></td>
+        <td data-bind="text: EndFiscalQuarter"></td>
+        <td data-bind="text: SKU"></td>
+        <td data-bind="text: Class"></td>
+        <td data-bind="text: GenderCat"></td>
+        <td data-bind="text: ItemCategory"></td>
+        <td data-bind="text: Style"></td>
+        <td data-bind="text: Color"></td>
+        <td data-bind="text: Location"></td>
+        <td data-bind="text: LocGroup"></td>
+        <td data-bind="text: SubGroup"></td>
+        <td data-bind="text: Organization"></td>
+        <td data-bind="text: StartAmount"></td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+<div id="edit" class="container" style="display: none">
+    <div class="row-fluid">
+        <form class="form-horizontal" action="procs/save" method="post">
+            <fieldset>
+                <div id="legend">
+                    <legend class="">Edit</legend>
+                </div>
+
+
+                <!-- Status -->
+                <div class="control-group">
+                    <label class="control-label"  for="Status">Status</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Status, valueUpdate: 'afterkeydown'" id="Status" name="Status" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- StartUnits -->
+                <div class="control-group">
+                    <label class="control-label"  for="StartUnits">StartUnits</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().StartUnits, valueUpdate: 'afterkeydown'" id="StartUnits" name="StartUnits" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- DemandDays -->
+                <div class="control-group">
+                    <label class="control-label"  for="DemandDays">DemandDays</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().DemandDays, valueUpdate: 'afterkeydown'" id="DemandDays" name="DemandDays" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- PlanName -->
+                <div class="control-group">
+                    <label class="control-label"  for="PlanName">PlanName</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().PlanName, valueUpdate: 'afterkeydown'" id="PlanName" name="PlanName" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- PlanDefinition -->
+                <div class="control-group">
+                    <label class="control-label"  for="PlanDefinition">PlanDefinition</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().PlanDefinition, valueUpdate: 'afterkeydown'" id="PlanDefinition" name="PlanDefinition" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- EndWeek -->
+                <div class="control-group">
+                    <label class="control-label"  for="EndWeek">EndWeek</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().EndWeek, valueUpdate: 'afterkeydown'" id="EndWeek" name="EndWeek" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- EndFiscalMonth -->
+                <div class="control-group">
+                    <label class="control-label"  for="EndFiscalMonth">EndFiscalMonth</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().EndFiscalMonth, valueUpdate: 'afterkeydown'" id="EndFiscalMonth" name="EndFiscalMonth" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- EndFiscalQuarter -->
+                <div class="control-group">
+                    <label class="control-label"  for="EndFiscalQuarter">EndFiscalQuarter</label>
+                    <div class="controls">
+                        <input type="text"  data-bind="value: editedItem().EndFiscalQuarter, valueUpdate: 'afterkeydown'" id="EndFiscalQuarter" name="EndFiscalQuarter" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- SKU -->
+                <div class="control-group">
+                    <label class="control-label"  for="SKU">SKU</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().SKU, valueUpdate: 'afterkeydown'" id="SKU" name="SKU" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- Class -->
+                <div class="control-group">
+                    <label class="control-label"  for="Class">Class</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Class, valueUpdate: 'afterkeydown'" id="Class" name="Class" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- GenderCat -->
+                <div class="control-group">
+                    <label class="control-label"  for="GenderCat">GenderCat</label>
+                    <div class="controls">
+                        <input type="text"  data-bind="value: editedItem().GenderCat, valueUpdate: 'afterkeydown'" id="GenderCat" name="GenderCat" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+
+                <!-- ItemCategory -->
+                <div class="control-group">
+                    <label class="control-label"  for="ItemCategory">ItemCategory</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().ItemCategory, valueUpdate: 'afterkeydown'" id="ItemCategory" name="ItemCategory" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+
+                <!-- ItemSubCategory -->
+                <div class="control-group">
+                    <label class="control-label"  for="StartUnits">ItemSubCategory</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().ItemSubCategory, valueUpdate: 'afterkeydown'" id="ItemSubCategory" name="ItemSubCategory" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+
+                <!-- Style -->
+                <div class="control-group">
+                    <label class="control-label"  for="StartUnits">Style</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Style, valueUpdate: 'afterkeydown'" id="Style" name="Style" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- Color -->
+                <div class="control-group">
+                    <label class="control-label"  for="Color">Color</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Color, valueUpdate: 'afterkeydown'" id="Color" name="Color" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <!-- Location -->
+                <div class="control-group">
+                    <label class="control-label"  for="Location">Location</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Location, valueUpdate: 'afterkeydown'" id="Location" name="Location" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <!-- LocGroup -->
+                <div class="control-group">
+                    <label class="control-label"  for="LocGroup">LocGroup</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().LocGroup, valueUpdate: 'afterkeydown'" id="LocGroup" name="LocGroup" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <!-- SubGroup -->
+                <div class="control-group">
+                    <label class="control-label"  for="SubGroup">SubGroup</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().SubGroup, valueUpdate: 'afterkeydown'" id="SubGroup" name="SubGroup" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+                <!-- Organization -->
+                <div class="control-group">
+                    <label class="control-label"  for="Organization">Organization</label>
+                    <div class="controls">
+                        <input type="text" data-bind="value: editedItem().Organization, valueUpdate: 'afterkeydown'" id="Organization" name="Organization" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+                <!-- StartAmount -->
+                <div class="control-group">
+                    <label class="control-label"  for="StartAmount">StartAmount</label>
+                    <div class="controls">
+                        <input type="text"  data-bind="value: editedItem().StartAmount, valueUpdate: 'afterkeydown'" id="StartAmount" name="StartAmount" placeholder="" class="input-xlarge">
+                    </div>
+                </div>
+
+
+
+                <!-- Submit -->
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success">Save</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+</body>
+<footer>
+
+
+    <script type="text/javascript">
+       function AppViewModel() {
+           var self = this;
+           self.procData =  ko.mapping.fromJS(<%- JSON.stringify(procs) %>);
+
+           self.editedItem = ko.observable(self.procData()[0]);
+
+
+           self.firstName = ko.observable("Bert");
+           self.lastName = ko.observable("Bertington");
+
+           self.fullName = ko.computed(function() {
+                return self.firstName() + " " + self.lastName();
+            }, this);
+           self.edit = function(item,event){
+                $("#edit").show();
+               var t = new self.procData();
+                for(var i = 0; i<self.procData().length;i++){
+                   if(self.procData()[i]._id()==event.target.id)
+                   {
+                       self.editedItem(self.procData()[i]);
+                   }
+               }
+           }
+           self.new = function()
+           {
+               $("#edit").show();
+               var t = new self.procData();
+               self.editedItem(t);
+           }
+        }
+
+        // Activates knockout.js
+        ko.applyBindings(new AppViewModel());
+
+
+
+
+
+
+
+    </script>
+</footer>
+
+
+</html>

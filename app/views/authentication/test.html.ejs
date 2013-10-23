@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+
+This is the title var which is <b><%=title[0].methodName%></b><br><br>
+This is the UserName var which is <b><%= user%></b><br><br>
+This is the Password var which is <b><%= password%></b>
+
+<p>Test Page</p>
+
+
+<% if (names.length) { %>
+<ul>
+    <% names.forEach(function(name){ %>
+    <li><%= name %></li>
+    <% }) %>
+</ul>
+<% } %>
+
+
+
+
+</body>
+</html>

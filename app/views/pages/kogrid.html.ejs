@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title><%= title%></title>
+    <link href="~/Images/Icons/iPlanner.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+
+    <!--//NAVBAR REFERNCES -->
+
+    <link href="~/Content/CustomDDL/css/style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="~/Content/CustomDDL/js/modernizr.custom.79639.js"></script>
+    <noscript> <link href="~/Content/CustomDDL/css/noJS.css" rel="stylesheet" /></noscript>
+
+    <!--END OF NAVBAR REFERENCES -->
+
+    @Styles.Render("~/Content/css/Layout")
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+<!--@*BEGINING OF NVBAR*@-->
+<div id="header">
+    <div id="consoleNavHeader" style="visibility: visible;">
+        <div id="awsgnav" class="tm-both">
+            <div id="nav-menubar" style="z-index: 3;">
+
+                <a id="nav-home-link" class="nav-elt" href="https://console.aws.amazon.com/console/home" target="_top" title="Console Home">
+                    <img src="~/Images/cube.png" />
+                </a>
+                <nav id="navBar">
+
+                </nav>
+
+
+                <div id="servicesDiv">
+                    <div class="nav-menu-separator">&nbsp;</div>
+                    <a id="nav-servicesMenu" class="nav-elt nav-menu" href="#" data-menu-content="servicesMenuContent">
+                        <div class="nav-elt-label" data-bind="text: mainLinks().services" ></div>
+                        <div class="nav-menu-arrow">&nbsp;</div>
+                    </a>
+                    <div class="nav-menu-separator">&nbsp;</div>
+                </div>
+                <div id="nav-menu-right">
+
+                    <a id="nav-userMenu" href="#" class="nav-elt nav-menu" data-menu-content="userMenuContent">
+                        <div class="nav-elt-label"><span><img class="frame" data-bind="attr: { src: userInfo().imageUrl }" style="width:25px;height:12px;"/></span><span data-bind="    text: mainLinks().welcomeNote"></span> @User.Identity.Name</div>
+                        <div class="nav-menu-arrow">&nbsp;</div>
+                    </a>
+                    <div class="nav-menu-separator">&nbsp;</div>
+                    <a id="nav-helpMenu" href="#" class="nav-elt nav-menu" data-menu-content="helpMenuContent">
+                        <div class="nav-elt-label" data-bind="text: mainLinks().help">  Help</div>
+                        <div class="nav-menu-arrow">&nbsp;</div>
+                    </a>
+                </div>
+            </div>
+
+            <div id="servicesMenuContent" class="nav-menu-content nav-menu-content-fullwidth" >
+
+                <div id="service-categories" class="service-menu-column" >
+
+                </div>
+                <div id="Services" style="display: inline-block;">
+
+
+
+                </div>
+
+                <div class="nav-menu-content-close" data-relatedDiv="servicesMenuContent">
+                    <div class="nav-menu-content-close-arrow">&nbsp;</div>
+                </div>
+            </div>
+            <div id="userMenuContent" class="nav-menu-content nav-menu-right-content" style="display: none;">
+            </div>
+
+            <div class="nav-menu-content nav-menu-right-content" id="helpMenuContent" style="display:none">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--@* Mobile Part*@-->
+<div id="mobileServiceCategories" class="wrapper-dropdown-3" style="display:none" ></div>
+<div id="mobileServices" class="wrapper-dropdown-3" style="display:none" ></div>
+<div id="mobileUser" class="wrapper-dropdown-3" style="display:none" ></div>
+<div id="mobileHelp" class="wrapper-dropdown-3" style="display:none" ></div>
+
+
+<div id="body">
+    @RenderSection("featured", required: false)
+    <section class="content-wrapper main-content clear-fix">
+        @RenderBody()
+        <nav id="helpDrop">
+
+
+        </nav>
+    </section>
+</div>
+<footer>
+    <div class="content-wrapper">
+        <div class="float-left">
+            @* <p id="d" data-hello-op="1234" data-pi="3.14" data-ars="http://www.arstechnica.com">The two men behind Super Meat Boy explain why  the game was released on sale, and why they asked the press to spread  the word of the price increase so no one "feels screwed." Welcome to the  world of a very unlikely indie hit.</p>
+            <h3>Data</h3>
+            <ul id="out">
+            </ul>
+            <button class="button" data-hello-op="1234">Remove</button>
+            <a id="1234">Samet</a>*@
+            <p>&copy; @DateTime.Now.Year - InSync Project Spider</p>
+        </div>
+    </div>
+</footer>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)<script src="~/Scripts/knockout-2.3.0.js"></script>
+<script src="~/Scripts/NavBar.js"></script>
+
+@*    <script>
+    // Create the dropdown base
+
+    //Add Span for the first elemnt  To select List
+
+    // Create default option "Go to..."
+
+    $("<span />", {
+        "text": "Help"
+    }).appendTo("#services");
+
+    $("<ul/>").attr("class", "dropdown").appendTo("#services");
+    // Populate dropdown with menu items
+    $("#helpMenuContent a").each(function () {
+        var el = $(this);
+        $("<a />", {
+            "value": "http://google.com",
+            "text": el.text()
+        }).appendTo($("<li/>").appendTo("#services ul"));
+    });
+
+    //$("#services select").change(function () {
+    //     window.location = $(this).find("option:selected").val();
+    //});
+
+</script>*@
+<script type="text/javascript">
+
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                if($('.wrapper-dropdown-3.active')[0]!=this)
+                    $('.wrapper-dropdown-3.active').removeClass('active');
+
+                $(this).toggleClass('active');
+
+                return false;
+            });
+
+            obj.opts.on('click', function () {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+
+            });
+        },
+        getValue: function () {
+            return this.val;
+        },
+        getIndex: function () {
+            return this.index;
+        }
+    }
+
+
+
+    $(function () {
+
+        var dd = new DropDown($('#mobileServiceCategories'));
+        var dd2 = new DropDown($('#mobileUser'));
+        var dd3 = new DropDown($('#mobileHelp'));
+
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+
+    });
+
+    //$(function () {
+
+
+    //    $(document).click(function () {
+    //        // all dropdowns
+    //        $('.wrapper-dropdown-3').removeClass('active');
+    //    });
+
+    //});
+
+    //$(function () {
+
+
+    //    $(document).click(function () {
+    //        // all dropdowns
+    //        $('.wrapper-dropdown-3').removeClass('active');
+    //    });
+
+    //});
+    //$(function () {
+
+
+    //    $(document).click(function () {
+    //        // all dropdowns
+    //        $('.wrapper-dropdown-3').removeClass('active');
+    //    });
+
+    //});
+</script>
+
+</body>
+</html>
